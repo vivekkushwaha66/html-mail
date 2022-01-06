@@ -1,4 +1,4 @@
-All tags supported online:
+All styles are supported inline:
 
 background
 background-color
