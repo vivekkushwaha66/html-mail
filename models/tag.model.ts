@@ -7,8 +7,7 @@ export class Tag implements ITag {
   private _attributes: IStyle[] = [];
   private _children: ITag[] = [];
 
-
-  constructor(name:string){
+  constructor(name: string) {
     this._name = name;
   }
 }
