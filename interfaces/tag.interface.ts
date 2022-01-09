@@ -6,4 +6,5 @@ export interface ITag {
   addAttribute(attribute: IAttribute): void;
   updateStyle(style: IStyle): void;
   updateAttribute(attribute: IAttribute): void;
+  definition(): string;
 }

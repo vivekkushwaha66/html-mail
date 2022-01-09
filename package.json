@@ -1,0 +1,24 @@
+{
+  "name": "html-mail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx tsc && node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivekkushwaha66/html-mail.git"
+  },
+  "keywords": [],
+  "author": "Vivek Kushwaha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vivekkushwaha66/html-mail/issues"
+  },
+  "homepage": "https://github.com/vivekkushwaha66/html-mail#readme",
+  "devDependencies": {
+    "typescript": "^4.5.4"}
+
+}

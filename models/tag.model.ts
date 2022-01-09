@@ -1,3 +1,4 @@
+import { IAttribute } from '../interfaces/attribute.interface';
 import { IStyle } from '../interfaces/style.interface';
 import { ITag } from '../interfaces/tag.interface';
 export class Tag implements ITag {
@@ -46,7 +47,7 @@ export class Tag implements ITag {
   stylesDefinition() {
       if (this._styles.length === 0) return '';
       const defs = this._styles.map(x => `${x.key}:${x.value}`);
-      return `style = ${defs.join(';')}`;
+      return `style = "${defs.join(';')}"`;
   }
 
   attributesDefinition() {
