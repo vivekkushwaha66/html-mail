@@ -1,4 +1,3 @@
-export interface IStyle {
-  key: string;
-  value: string;
-}
+import { IDictionary } from "./dictionary.interface";
+
+export interface IStyle extends IDictionary<string> { }

@@ -1,4 +1,3 @@
-export interface IAttribute {
-  key: sring;
-  value: string;
-}
+import { IDictionary } from "./dictionary.interface";
+
+export interface IAttribute extends IDictionary<string> { }
