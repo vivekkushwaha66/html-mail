@@ -1,7 +1,10 @@
 import { Tag } from "./src/models/tag.model";
 import { IAttribute } from "./src/interfaces/attribute.interface";
-const tag =  new Tag('html');
-const att: IAttribute = { key: 'version', value: '5'};
-tag.addAttribute(att);
+import { TagBuilder } from "./src/builder/tag.builder";
+const builder = new TagBuilder('html');
 
-console.log(tag.definition())
+const definiton = builder
+    .setAttribute('', '')
+    .setStyle('', '')
+    .build();
+console.log(definiton)  
