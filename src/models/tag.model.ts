@@ -6,7 +6,7 @@ export class Tag implements ITag {
     private _name: string;
     private _styles: Array<IStyle> = new Array<IStyle>();
     private _attributes: Array<IAttribute> = new Array<IAttribute>();
-    private _children: ITag[] = [];
+    private _children: Tag[] = [];
 
     constructor(name: string) {
         this._name = name;
@@ -24,14 +24,24 @@ export class Tag implements ITag {
 
     addStyle(style: IStyle): void {
         const index = this.findStyleIndex(style.key);
-        if (index > -1) this.updateStyle(style);
-        else this._styles.push(style);
+        if (index > -1) {
+            console.warn(`Style '${style.key}' already exists, hence updating it`);
+            this.updateStyle(style);
+        }
+        else {
+            this._styles.push(style);
+        }
     }
 
     addAttribute(attribute: IAttribute): void {
         const index = this.findAttributeIndex(attribute.key);
-        if (index > -1) this.updateAttribute(attribute);
-        else this._attributes.push(attribute);
+        if (index > -1) {
+            console.warn(`Attribute '${attribute.key}' already exists, hence updating it`);
+            this.updateAttribute(attribute);
+
+        } else {
+            this._attributes.push(attribute);
+        }
     }
 
 
@@ -48,13 +58,21 @@ export class Tag implements ITag {
     stylesDefinition() {
         if (this._styles.length === 0) return '';
         const defs = this._styles.map(x => `${x.key}:${x.value}`);
-        return `style = "${defs.join(';')}"`;
+        if (defs.length > 1) {
+            return ` style="${defs.join(';')}"`;
+        }
+        return ` style="${defs};"`;
+    }
+
+    addChild(tag: Tag) {
+        this._children.push(tag);
     }
 
     attributesDefinition() {
         if (this._attributes.length === 0) return '';
         const attributes = this._attributes.map(x => `${x.key}="${x.value}"`);
-        return attributes.join(" ");
+        if (attributes.length > 1) return ` ${attributes.join('')}`
+        return ` ${attributes.join(" ")}`;
     }
 
     childrenDefinition() {
@@ -64,6 +82,6 @@ export class Tag implements ITag {
     }
 
     definition(): string {
-        return `<${this._name} ${this.attributesDefinition()} ${this.stylesDefinition()}>${this.childrenDefinition()}</${this._name}>`;
+        return `<${this._name}${this.attributesDefinition()}${this.stylesDefinition()}>${this.childrenDefinition()}</${this._name}>`;
     }
 }

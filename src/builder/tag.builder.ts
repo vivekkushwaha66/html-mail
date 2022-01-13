@@ -11,13 +11,26 @@ export class TagBuilder {
     }
 
     setStyle(key: string, value: string) {
+        this._tagValidator.checkNullOrEmptyKey(key);
+        this._tagValidator.checkNullOrEmptyValue(value);
         this._tag.addStyle({ key, value });
         return this;
     }
 
     setAttribute(key: string, value: string) {
+        this._tagValidator.checkNullOrEmptyKey(key);
+        this._tagValidator.checkNullOrEmptyValue(value);
         this._tag.addAttribute({ key, value });
         return this;
+    }
+
+    addChild(tag: Tag) {
+        this._tag.addChild(tag);
+        return this;
+    }
+
+    ref() {
+        return this._tag;
     }
 
     build() {
